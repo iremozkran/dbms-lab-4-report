@@ -23,10 +23,10 @@ Aşağıda kutucuk (checkbox) ile gösterilen maddelerden en az birini seçtiği
 
 ### Buffer Pool
 
-- [ ]  Veritabanları, Sık kullanılan sayfaları bellekte (RAM) kopyalar mı (caching) ?
+- [x]  Veritabanları, Sık kullanılan sayfaları bellekte (RAM) kopyalar mı (caching) ?
 
-- [ ]  LRU / CLOCK gibi algoritmaları
-- [ ]  Diske yapılan I/O nasıl minimize ederler?
+- [x]  LRU / CLOCK gibi algoritmaları
+- [x]  Diske yapılan I/O nasıl minimize ederler?
 
 # 2. Veri Yapıları Perspektifi
 
@@ -63,22 +63,16 @@ Ekran kaydı. 2-3 dk. açık kaynak V.T. kodu üzerinde konunun gösterimi. Vide
 
 # Açıklama (Ort. 600 kelime)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia luctus urna, vel aliquet lacus facilisis ac. Donec quis placerat orci, efficitur consectetur lacus. Sed rhoncus erat ex, at sagittis velit mollis et. Aliquam enim orci, sollicitudin sit amet libero quis, mollis ultricies risus. Fusce tempor, felis a consequat tristique, dolor magna convallis nulla, vel ullamcorper magna mauris non ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam quis imperdiet ex, at blandit sapien. Aliquam lacinia erat ac ipsum fringilla, quis vestibulum augue posuere. Nulla in enim nulla. Nunc euismod odio mauris, sed sollicitudin ex condimentum non. In efficitur egestas enim. Fusce tempus erat quis placerat convallis.
-
-Nam sit amet tincidunt ante. Pellentesque sit amet quam interdum, pellentesque dui vel, iaculis elit. Donec sed dui sodales nulla dignissim tincidunt. Maecenas semper metus id fermentum vulputate. Pellentesque lobortis hendrerit venenatis. Nullam imperdiet, ex eget ultricies egestas, mauris nunc aliquam ante, sed consectetur tellus ex vel leo. Nunc ut erat dapibus, auctor dolor eu, pretium sem. In lacinia congue eros et finibus. Aenean auctor, leo a feugiat placerat, urna felis lacinia purus, laoreet volutpat mi nisl eget dui. Ut vitae condimentum leo.
-
-Maecenas ex diam, vehicula et nulla vel, mattis viverra metus. Nam at ex scelerisque, semper augue lobortis, semper est. Etiam id pretium odio, eget rutrum neque. Pellentesque blandit magna vel aliquam gravida. Nullam massa nisl, imperdiet at dapibus non, cursus vehicula turpis. Vestibulum rutrum hendrerit augue. Aliquam id nisi id arcu tempor venenatis vel nec erat. Morbi sed posuere erat. Morbi et sollicitudin urna. Suspendisse ullamcorper vitae purus sit amet sodales. Nam ut tincidunt ipsum, ut varius erat. Duis congue magna nec euismod condimentum. In hac habitasse platea dictumst. Nunc mattis odio sed enim laoreet imperdiet. In hac habitasse platea dictumst. Nullam tincidunt quis.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia luctus urna, vel aliquet lacus facilisis ac. Donec quis placerat orci, efficitur consectetur lacus. Sed rhoncus erat ex, at sagittis velit mollis et. Aliquam enim orci, sollicitudin sit amet libero quis, mollis ultricies risus. Fusce tempor, felis a consequat tristique, dolor magna convallis nulla, vel ullamcorper magna mauris non ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam quis imperdiet ex, at blandit sapien. Aliquam lacinia erat ac ipsum fringilla, quis vestibulum augue posuere. Nulla in enim nulla. Nunc euismod odio mauris, sed sollicitudin ex condimentum non. In efficitur egestas enim. Fusce tempus erat quis placerat convallis.
-
-Nam sit amet tincidunt ante. Pellentesque sit amet quam interdum, pellentesque dui vel, iaculis elit. Donec sed dui sodales nulla dignissim tincidunt. Maecenas semper metus id fermentum vulputate. Pellentesque lobortis hendrerit venenatis. Nullam imperdiet, ex eget ultricies egestas, mauris nunc aliquam ante, sed consectetur tellus ex vel leo. Nunc ut erat dapibus, auctor dolor eu, pretium sem. In lacinia congue eros et finibus. Aenean auctor, leo a feugiat placerat, urna felis lacinia purus, laoreet volutpat mi nisl eget dui. Ut vitae condimentum leo.
-
-Maecenas ex diam, vehicula et nulla vel, mattis viverra metus. Nam at ex scelerisque, semper augue lobortis, semper est. Etiam id pretium odio, eget rutrum neque. Pellentesque blandit magna vel aliquam gravida. Nullam massa nisl, imperdiet at dapibus non, cursus vehicula turpis. Vestibulum rutrum hendrerit augue. Aliquam id nisi id arcu tempor venenatis vel nec erat. Morbi sed posuere erat. Morbi et sollicitudin urna. Suspendisse ullamcorper vitae purus sit amet sodales. Nam ut tincidunt ipsum, ut varius erat. Duis congue magna nec euismod condimentum. In hac habitasse platea dictumst. Nunc mattis odio sed enim laoreet imperdiet. In hac habitasse platea dictumst. Nullam tincidunt quis.
+ Disk erişim maliyeti veri tabanı performanslarını belirleyen etkenlerden biridir. CPU ve RAM erişimleri nanosaniyeler şeklindeyken disk erişimleri milisaniyeler şeklindedir. Bundan dolayı veri tabanı yönetim sistemleri performansı arttırmak için RAM üzerinde çalışacak şekilde oluşturulmuştur. Bu yapılar içerinde bulunan bileşenlerden biri de Buffer Pool yapısıdır. 
+ Buffer Pool yapısı, veritabanında disk üzerindeki veri sayfalarını kopyalarını RAM'de tutan bellek alanıdır. Sorgu sırasında veritabanı önce veri sayfasının buffer pool içerisinde bulunup bulunmadığını kontrol eder. Bellekte mevcutsa veri RAM üzerinden okunur.Bu yapı sayesinde caching mekanizması oluşturulur. Veritabanları diskten veri okurken satır bazlı değil, sayfa bazlı okuma yapar. Yani tek bir disk erişimiyle birden fazla satır RAM’e alınır. Bu sayede aynı sayfa içerisindeki farklı satırlara erişim gerektiğinde tekrar disk erişimi yapılmasına gerek kalmaz. 
+ Buffer Pool yapısında sınırlı bir bellek alanı olduğundan dolayı yeni sayfalar eklendiğinde bazı sayfalar bellekten çıkarılmalıdır. Bunun için PostgeSQL'de LRU algoritmasına benzer şekilde çalışan CLOCK algoritması kullanılır. LRU algoritması, bellek yönetiminde kullanılan sayfa değiştirme algoritmasıdır. Amacı bellek dolu olduğunda hangi veri sayfasının çıkarılacağına karar vermektir. Aynı şekilde CLOCK algoritmasıda aynı işlevi görür ve uzun süre erişilmeyen sayfalar bellekten çıkarılırken sürekli kullanılan sayfalar bellekte kalmaya devam eder.CLOCK algoritmasında her sayfa için bir kullanım biti tutulur ve dairesel bir yapı üzerinde çalışan bir işaretçi ile sayfalar kontrol edilir. CLOCK algoritması, LRU algoritmasına göre daha az maliyetli olduğundan dolayı tercih edilmektedir.
+ Buffer Pool yapısı sayesinde verinin önce RAM'de bulunuyorsa diske uğramadan RAM üzerinden veriye ulaşması sayesinde bellekte input, output işlemleri minimize edilir. Bu sayede hem disk yükü azalır hemde sorgu süresi azalır. Disk erişiminin azalması, CPU'nun bekleme süresi azaltılır bu sayede daha verimli ve performansı yüksek bir sistem elde edilir.
+ Sonuç olarak Buffer Pool yapısı sayesinde disk erişimi azaltılarak yüksek performanslı bir sistem oluşur. Büyük veri setleriyle uğraşıldığında buffer pool yapısı sayesinde performans açısından önemlidir. Veritabanları daha hızlı, verimli ve ölçeklenebilir bir şekilde çalışabilir.
 
 ## VT Üzerinde Gösterilen Kaynak Kodları
 
-Açıklama [Linki](https://...) \
-Açıklama [Linki](https://...) \
-Açıklama [Linki](https://...) \
+PostgreSQL'de buffer pool yapısının ana tanımı ve veri yapılarının yer aldığı dosya ve paylaşımlı bellek üzerindeki buffer yönetimi burada tanımlanmaktadır.   [Linki]([https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c) \
+Buffer pool içerisinde kullanılan buffer descriptor yapılarının ve buffer durum bilgilerinin tanımlandığı başlık dosyası. Sayfaların bellekteki durumları ve kullanım bilgileri bu dosya üzerinden takip edilir. [Linki](https://github.com/postgres/postgres/blob/master/src/include/storage/buf_internals.h) \
+PostgreSQL'de CLOCK algoritmasına benzer şekilde çalışan buffer replacement mekanizmasının uygulandığı kaynak kod dosyası. [Linki](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/freelist.c) \
 ... \
 ...
