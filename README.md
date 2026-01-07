@@ -61,7 +61,7 @@ Ekran kaydı. 2-3 dk. açık kaynak V.T. kodu üzerinde konunun gösterimi. Vide
 
 ---
 
-# Açıklama (Ort. 600 kelime)
+# Açıklama (Ort. 300 kelime)
 
  Disk erişim maliyeti veri tabanı performanslarını belirleyen etkenlerden biridir. CPU ve RAM erişimleri nanosaniyeler şeklindeyken disk erişimleri milisaniyeler şeklindedir. Bundan dolayı veri tabanı yönetim sistemleri performansı arttırmak için RAM üzerinde çalışacak şekilde oluşturulmuştur. Bu yapılar içerinde bulunan bileşenlerden biri de Buffer Pool yapısıdır. 
  
