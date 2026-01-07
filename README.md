@@ -75,7 +75,7 @@ Ekran kaydı. 2-3 dk. açık kaynak V.T. kodu üzerinde konunun gösterimi. Vide
 
 ## VT Üzerinde Gösterilen Kaynak Kodları
 
-PostgreSQL'de buffer pool yapısının ana tanımı ve veri yapılarının yer aldığı dosya ve paylaşımlı bellek üzerindeki buffer yönetimi burada tanımlanmaktadır.   [Linki]([https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c) \
+PostgreSQL'de buffer pool yapısının ana tanımı ve veri yapılarının yer aldığı dosya ve paylaşımlı bellek üzerindeki buffer yönetimi burada tanımlanmaktadır.   [Linki](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c) \
 Buffer pool içerisinde kullanılan buffer descriptor yapılarının ve buffer durum bilgilerinin tanımlandığı başlık dosyası. Sayfaların bellekteki durumları ve kullanım bilgileri bu dosya üzerinden takip edilir. [Linki](https://github.com/postgres/postgres/blob/master/src/include/storage/buf_internals.h) \
 PostgreSQL'de CLOCK algoritmasına benzer şekilde çalışan buffer replacement mekanizmasının uygulandığı kaynak kod dosyası. [Linki](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/freelist.c) \
 ... \
