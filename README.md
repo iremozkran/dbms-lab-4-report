@@ -64,9 +64,13 @@ Ekran kaydı. 2-3 dk. açık kaynak V.T. kodu üzerinde konunun gösterimi. Vide
 # Açıklama (Ort. 600 kelime)
 
  Disk erişim maliyeti veri tabanı performanslarını belirleyen etkenlerden biridir. CPU ve RAM erişimleri nanosaniyeler şeklindeyken disk erişimleri milisaniyeler şeklindedir. Bundan dolayı veri tabanı yönetim sistemleri performansı arttırmak için RAM üzerinde çalışacak şekilde oluşturulmuştur. Bu yapılar içerinde bulunan bileşenlerden biri de Buffer Pool yapısıdır. 
+ 
  Buffer Pool yapısı, veritabanında disk üzerindeki veri sayfalarını kopyalarını RAM'de tutan bellek alanıdır. Sorgu sırasında veritabanı önce veri sayfasının buffer pool içerisinde bulunup bulunmadığını kontrol eder. Bellekte mevcutsa veri RAM üzerinden okunur.Bu yapı sayesinde caching mekanizması oluşturulur. Veritabanları diskten veri okurken satır bazlı değil, sayfa bazlı okuma yapar. Yani tek bir disk erişimiyle birden fazla satır RAM’e alınır. Bu sayede aynı sayfa içerisindeki farklı satırlara erişim gerektiğinde tekrar disk erişimi yapılmasına gerek kalmaz. 
+ 
  Buffer Pool yapısında sınırlı bir bellek alanı olduğundan dolayı yeni sayfalar eklendiğinde bazı sayfalar bellekten çıkarılmalıdır. Bunun için PostgeSQL'de LRU algoritmasına benzer şekilde çalışan CLOCK algoritması kullanılır. LRU algoritması, bellek yönetiminde kullanılan sayfa değiştirme algoritmasıdır. Amacı bellek dolu olduğunda hangi veri sayfasının çıkarılacağına karar vermektir. Aynı şekilde CLOCK algoritmasıda aynı işlevi görür ve uzun süre erişilmeyen sayfalar bellekten çıkarılırken sürekli kullanılan sayfalar bellekte kalmaya devam eder.CLOCK algoritmasında her sayfa için bir kullanım biti tutulur ve dairesel bir yapı üzerinde çalışan bir işaretçi ile sayfalar kontrol edilir. CLOCK algoritması, LRU algoritmasına göre daha az maliyetli olduğundan dolayı tercih edilmektedir.
+ 
  Buffer Pool yapısı sayesinde verinin önce RAM'de bulunuyorsa diske uğramadan RAM üzerinden veriye ulaşması sayesinde bellekte input, output işlemleri minimize edilir. Bu sayede hem disk yükü azalır hemde sorgu süresi azalır. Disk erişiminin azalması, CPU'nun bekleme süresi azaltılır bu sayede daha verimli ve performansı yüksek bir sistem elde edilir.
+ 
  Sonuç olarak Buffer Pool yapısı sayesinde disk erişimi azaltılarak yüksek performanslı bir sistem oluşur. Büyük veri setleriyle uğraşıldığında buffer pool yapısı sayesinde performans açısından önemlidir. Veritabanları daha hızlı, verimli ve ölçeklenebilir bir şekilde çalışabilir.
 
 ## VT Üzerinde Gösterilen Kaynak Kodları
